@@ -12,15 +12,28 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Header from "./components/Header/Header";
 import './styles/Pages.css'
 import ChatbotComponent from "./components/Chatbot/ChatbotComponent";
+import DeveloperInfoPopup from "./components/DeveloperInfo/DeveloperInfoPopup";
 
 function App(){
+  
   const [showPopup, setShowPopup] =useState(true);
   const handleClosePopup = () => {
      setShowPopup(false);
-  }
+  };
 
 
   return (
+    <>
+    <div>
+        {/* Yousr main application content */}
+        <DeveloperInfoPopup
+          show={showPopup}
+          onClose={handleClosePopup}
+          studentName="Snehal Dhanaji Lagare"
+          studentPhotoUrl="/images/snehal lagare.jpg" // Path to their photo
+          uniqueMessage="Learned so much during this OJT! This app showcases my independent coding and deployment skills"
+        />
+      </div>
     <div>
       <Router>
       
@@ -32,13 +45,11 @@ function App(){
         <Route path="/contact"element={<ContactPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
-
-      <ChatbotComponent/>
-        
-        
+      <ChatbotComponent/>  
       </Router>
 
     </div>
+    </>
   );
 };
 
